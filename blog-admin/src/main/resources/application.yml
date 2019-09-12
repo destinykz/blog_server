@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: @profileActive@
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+server:
+  port: 9999
+  tomcat:
+    uri-encoding: utf-8

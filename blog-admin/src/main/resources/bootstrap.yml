@@ -1,0 +1,44 @@
+spring:
+  profiles:
+    active: @profileActive@
+  application:
+    name: blog-admin
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        hostname: ${spring.cloud.client.ip-address}
+        ip-address: true
+        health-check-interval: 10s
+        health-check-path: /health
+        register: true
+        deregister: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+      config:
+        enabled: true
+        watch:
+          enabled: true
+          delay: 10000
+          wait-time: 30
+        format: yaml
+        prefix: config
+        name: ${spring.application.name}
+
+---
+spring:
+  application:
+    name: blog-admin
+  cloud:
+    consul:
+      host: localhost
+  profiles: dev
+
+---
+spring:
+  application:
+    name: blog-admin
+  cloud:
+    consul:
+      host: localhost
+  profiles: pro

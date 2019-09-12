@@ -1,0 +1,31 @@
+application:
+  db:
+    dbroute: name
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=GMT%2B8&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    initialSize: 20
+    minIdle: 5
+    maxActive: 200
+
+    maxWait: 60000
+    timeBetweenEvictionRunsMills: 60000
+    minEvictableIdleTimeMillis: 300000
+
+    dbcp:
+      remove-abandoned: true
+      remove-abandoned-timeout: 180
+    testWhileIdle: true
+    test-on-borrow: false;
+    testOnReturn: false
+    poolPreparedStatements: true
